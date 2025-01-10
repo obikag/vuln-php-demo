@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: acme_app
+    ports:
+      - "80:80"   # HTTP
+      - "443:443"  # HTTPS
+    volumes:
+      - ./acme:/var/www/html
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+    networks:
+      - acme_network
+
+networks:
+  acme_network:
+    driver: bridge
