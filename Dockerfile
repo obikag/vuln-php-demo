@@ -22,3 +22,25 @@ RUN echo "\
 
 # Ensure the default SSL site is enabled
 RUN a2ensite default-ssl.conf
+
+# Install Python
+RUN apt-get update && apt-get install -y python3 python3-pip sqlite3 && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set working directory for Python scripts
+WORKDIR /app
+
+# Copy PHP application
+COPY ./acme /var/www/html
+
+# Copy Python application
+COPY ./svr-checker /app
+
+# Expose both Apache and Python server ports
+EXPOSE 80 443 1234
+
+# Setup User Database
+RUN php /var/www/html/scripts/setup_database.php
+
+# Start both services: Apache and Python server
+CMD ["bash", "-c", "service apache2 start && python3 /app/server.py"]

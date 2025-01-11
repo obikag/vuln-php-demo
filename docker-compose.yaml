@@ -9,8 +9,10 @@ services:
     ports:
       - "80:80"   # HTTP
       - "443:443"  # HTTPS
+      - "1234:1234" # Python server port
     volumes:
-      - ./acme:/var/www/html
+      - ./acme:/var/www/html # Mount PHP files
+      - ./svr-checker:/app   # Mount Python files
     environment:
       - APACHE_DOCUMENT_ROOT=/var/www/html
     networks:

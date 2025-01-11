@@ -74,7 +74,7 @@ def start_server(host, port, db_path):
 if __name__ == "__main__":
     HOST = "0.0.0.0"  # Listen on all available interfaces
     PORT = 1234
-    DB_PATH = "example.db"  # Replace with your SQLite database path
+    DB_PATH = "/var/www/html/database/acme.db"  # SQLite database path
 
     # Ensure the database file exists
     if not os.path.exists(DB_PATH):
