@@ -28,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 include 'includes/header.php';
-include 'includes/nav.php';
 ?>
 
 <h1>User Login</h1>

@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 // User login validation
 function isLoggedIn() {

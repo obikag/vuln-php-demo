@@ -1,5 +1,5 @@
 <?php
-$db = new SQLite3('../acme/database/acme.db');
+$db = new SQLite3('database/acme.db');
 
 // Create users table if not exists
 $db->exec("CREATE TABLE IF NOT EXISTS users (

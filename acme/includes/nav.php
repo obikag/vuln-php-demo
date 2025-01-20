@@ -1,3 +1,4 @@
+<?php require 'scripts/functions.php'; ?>
 <nav>
     <ul>
         <li><a href="index.php">Home</a></li>

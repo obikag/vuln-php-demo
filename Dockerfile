@@ -30,17 +30,21 @@ RUN apt-get update && apt-get install -y python3 python3-pip sqlite3 && \
 # Set working directory for Python scripts
 WORKDIR /app
 
+# Copy Python application
+COPY ./svr-checker /app
+
+# Set working directory for PHP scripts
+WORKDIR /var/www/html
+
 # Copy PHP application
 COPY ./acme /var/www/html
 
-# Copy Python application
-COPY ./svr-checker /app
+# Setup User Database
+RUN php ./scripts/setup_db.php
 
 # Expose both Apache and Python server ports
 EXPOSE 80 443 1234
 
-# Setup User Database
-RUN php /var/www/html/scripts/setup_database.php
-
 # Start both services: Apache and Python server
-CMD ["bash", "-c", "service apache2 start && python3 /app/server.py"]
+RUN python3 /app/server.py &
+RUN service apache2 start
