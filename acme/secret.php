@@ -1,14 +1,13 @@
-<?php 
+<?php include 'includes/header.php';?> 
 
-$db = new SQLite3('database/acme.db');
+<?php 
+$db = new SQLite3("database/acme.db");
 $stmt = $db->prepare("SELECT COUNT(*) as num_users FROM users WHERE role = 'user'");
 $result = $stmt->execute();
-$user_cnt = $result->fetch();
+$user_cnt = $result->fetchArray();
 $stmt = $db->prepare("SELECT COUNT(*) as num_users FROM users WHERE role = 'admin'");
 $result = $stmt->execute();
-$admin_cnt = $result->fetch();
-
-include 'includes/header.php'; 
+$admin_cnt = $result->fetchArray();
 ?>
 
 <h1>Secret Testing Page</h1>
