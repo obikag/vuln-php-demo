@@ -28,19 +28,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 include 'includes/header.php';
-include 'includes/nav.php';
 ?>
 
-<h1>Admin Login</h1>
-<?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
-<form action="" method="POST">
-    <label for="admin_username">Admin Username:</label>
-    <input type="text" id="admin_username" name="admin_username" required>
-    
-    <label for="admin_password">Admin Password:</label>
-    <input type="password" id="admin_password" name="admin_password" required>
-    
-    <button type="submit">Login</button>
-</form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">Admin Login</h3>
+                    <?php if (isset($error) && !empty($error)): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $error; ?>
+                        </div>
+                    <?php endif; ?>
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="admin_username" class="form-label">Username</label>
+                            <input type="text" name="username" id="admin_username" class="form-control" placeholder="Enter admin username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="admin_password" class="form-label">Password</label>
+                            <input type="password" name="password" id="admin_password" class="form-control" placeholder="Enter password" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                        </div>
+                        <div class="mt-3 text-center">
+                            <button type="button" class="btn btn-secondary w-100" onclick="window.location.href='index.php';">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php include 'includes/footer.php'; ?>

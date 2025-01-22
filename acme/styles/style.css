@@ -1,0 +1,11 @@
+.navbar .navbar-nav {
+    margin: 0 auto;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+}
+.blockquote {
+    font-style: italic;
+}
