@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'scripts/functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

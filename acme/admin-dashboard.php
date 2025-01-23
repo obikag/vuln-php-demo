@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'scripts/functions.php';
 
 // Check if admin is logged in

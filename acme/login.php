@@ -1,6 +1,8 @@
 <?php
+session_start();
 require 'scripts/functions.php';
 
+$test = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -13,12 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindValue(':username', $username, SQLITE3_TEXT);
     $result = $stmt->execute();
     $user = $result->fetchArray(SQLITE3_ASSOC);
-
+    $test = "Posting";
     if ($user && password_verify($password, $user['password'])) {
         // Set session
         $_SESSION['user'] = $username;
         redirect('products.php');
-    } else if (count($user) > 0) {
+    } else if ($user && count($user) > 0) {
         // User exists but password is incorrect
         $error = "Invalid Password!";
     } else {
@@ -36,12 +38,13 @@ include 'includes/header.php';
             <div class="card shadow">
                 <div class="card-body">
                     <h3 class="text-center mb-4">User Login</h3>
+                    <?php echo $test; ?>
                     <?php if (isset($error) && !empty($error)): ?>
                         <div class="alert alert-danger" role="alert">
                             <?php echo $error; ?>
                         </div>
                     <?php endif; ?>
-                    <form method="POST">
+                    <form method="POST" action="login.php">
                         <div class="mb-3">
                             <label for="userUsername" class="form-label">Username</label>
                             <input type="text" name="username" id="userUsername" class="form-control" placeholder="Enter username" required>
