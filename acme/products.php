@@ -1,12 +1,14 @@
 <?php
 session_start();
-include 'includes/header.php';
-include 'includes/nav.php';
+require 'scripts/functions.php';
 
 // Check if user is logged in
-if (!isLoggedIn()) {
-    redirect('login.php'); //TODO: Continue Here
+if (!isLoggedIn() && !isAdmin()) {
+    redirect('login.php');
 }
+
+include 'includes/header.php';
+include 'includes/nav.php';
 
 // Include database connection (SQLite)
 $db = new SQLite3('database/acme.db');
@@ -28,8 +30,10 @@ $db = new SQLite3('database/acme.db');
             // Display product details
             echo '<div class="card">';
             echo '<div class="card-body">';
+            echo '<img src="' . $product['image_path'] . '" class="card-img-top w-50" alt="Product Image">';
             echo '<h3 class="card-title">' . htmlspecialchars($product['name']) . '</h3>';
             echo '<p class="card-text">' . htmlspecialchars($product['description']) . '</p>';
+            echo '<p class="card-text"><strong>Category:</strong> ' . htmlspecialchars($product['category']) . '</p>';
             echo '<p class="card-text"><strong>Price:</strong> $' . htmlspecialchars($product['price']) . '</p>';
             echo '<a href="products.php" class="btn btn-primary">Back to Products</a>';
             echo '</div>';
@@ -44,7 +48,6 @@ $db = new SQLite3('database/acme.db');
 
         // Check if products exist
         if ($result) {
-            //echo '<h3 class="mb-4">Our Products</h3>';
             echo '<div class="mt-5 text-center">';
             echo '<h1>Our Products</h1>';
             echo '<p class="lead">Premium joint fittings fashioned for quality work.</p>';
@@ -55,7 +58,9 @@ $db = new SQLite3('database/acme.db');
                 echo '<div class="col-md-4">';
                 echo '<div class="card mb-4">';
                 echo '<div class="card-body">';
+                echo '<img src="' . $product['image_path'] . '" class="card-img-top img-fluid" alt="Product Image">';
                 echo '<h5 class="card-title">' . htmlspecialchars($product['name']) . '</h5>';
+                echo '<p class="card-text"><strong>Category:</strong> ' . htmlspecialchars($product['category']) . '</p>';
                 echo '<p class="card-text"><strong>Price:</strong> $' . htmlspecialchars($product['price']) . '</p>';
                 echo '<a href="products.php?product_id=' . htmlspecialchars($product['id']) . '" class="btn btn-primary">View Details</a>';
                 echo '</div>';

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'scripts/functions.php';
 include 'includes/header.php';
 include 'includes/nav.php'; 
 ?>
@@ -47,10 +48,12 @@ include 'includes/nav.php';
                     <p>
                         Whether you're looking for joint fittings for large-scale industrial projects or small-scale operations, Acme Enterprises is equipped to meet your needs with reliable, high-performance products that are built to last.
                     </p>
+
                     <h3>Contact Us</h3>
                     <p>
-                        Interested in learning more about our products or services? Reach out to us today! Our customer service team is ready to assist you with any inquiries or requests.
+                        Interested in learning more about our products or services? Reach out to us today! Our customer service team is ready to assist you with any inquiries or requests. This includes registration for viewing our products.
                     </p>
+                    <!--TODO: Discuss with management and confirm if we should stop using client's first names for usernames -->
                     <p class="text-center">
                         <a href="contact.php" class="btn btn-primary">Contact Us</a>
                     </p>

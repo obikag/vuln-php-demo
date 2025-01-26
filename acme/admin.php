@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($user && password_verify($password, $user['password'])) {
         // Set session
-        $_SESSION['user'] = $username;
-        redirect('products.php');
+        $_SESSION['admin'] = $username;
+        redirect('admin-dashboard.php');
     } else if (count($user) > 0) {
         // User exists but password is incorrect
         $error = "Invalid Password!";
@@ -45,11 +45,11 @@ include 'includes/header.php';
                     <form method="POST">
                         <div class="mb-3">
                             <label for="admin_username" class="form-label">Username</label>
-                            <input type="text" name="username" id="admin_username" class="form-control" placeholder="Enter admin username" required>
+                            <input type="text" name="admin_username" id="admin_username" class="form-control" placeholder="Enter admin username" required>
                         </div>
                         <div class="mb-3">
                             <label for="admin_password" class="form-label">Password</label>
-                            <input type="password" name="password" id="admin_password" class="form-control" placeholder="Enter password" required>
+                            <input type="password" name="admin_password" id="admin_password" class="form-control" placeholder="Enter password" required>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary w-100">Login</button>

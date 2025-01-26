@@ -25,7 +25,7 @@ function executeSystemCommand() {
 
         // Execute the command and return the output
         $output = shell_exec($command);
-        echo "<pre>$output</pre>";
+        echo $output;
     }
 }
 ?>

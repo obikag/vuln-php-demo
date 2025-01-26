@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'scripts/functions.php';
 include 'includes/header.php';
 include 'includes/nav.php'; 
 ?>
@@ -48,7 +49,7 @@ include 'includes/nav.php';
             <div class="card shadow">
                 <img src="images/cat-1.jpg" class="card-img-top" alt="Category 1">
                 <div class="card-body">
-                    <h5 class="card-title">Category 1</h5>
+                    <h5 class="card-title">Basic</h5>
                     <p class="card-text">Explore our range of premium fittings for specific applications.</p>
                     <a href="products.php" class="btn btn-primary">View Products</a>
                 </div>
@@ -58,7 +59,7 @@ include 'includes/nav.php';
             <div class="card shadow">
                 <img src="images/cat-2.jpg" class="card-img-top" alt="Category 2">
                 <div class="card-body">
-                    <h5 class="card-title">Category 2</h5>
+                    <h5 class="card-title">Performance</h5>
                     <p class="card-text">High-performance fittings designed for durability and efficiency.</p>
                     <a href="products.php" class="btn btn-primary">View Products</a>
                 </div>
@@ -68,7 +69,7 @@ include 'includes/nav.php';
             <div class="card shadow">
                 <img src="images/cat-3.jpg" class="card-img-top" alt="Category 3">
                 <div class="card-body">
-                    <h5 class="card-title">Category 3</h5>
+                    <h5 class="card-title">Premium</h5>
                     <p class="card-text">Innovative solutions tailored to your business needs.</p>
                     <a href="products.php" class="btn btn-primary">View Products</a>
                 </div>
@@ -78,7 +79,7 @@ include 'includes/nav.php';
             <div class="card shadow">
                 <img src="images/cat-4.jpg" class="card-img-top" alt="Category 4">
                 <div class="card-body">
-                    <h5 class="card-title">Category 4</h5>
+                    <h5 class="card-title">Leading-Edge</h5>
                     <p class="card-text">Discover our latest advancements in joint fittings.</p>
                     <a href="products.php" class="btn btn-primary">View Products</a>
                 </div>
